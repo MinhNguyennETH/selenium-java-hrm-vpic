@@ -11,7 +11,7 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "loginTestData")
     public Object[][] getLoginData() {
         return new Object[][]{
-                {"09152", "Vanbinh123", true},     // Case of successful login
+                {"09152", "*******", true},     // Case of successful login
                 {"aa", "09152", false},                 // In case the login name is wrong
                 {"09152", "hg", false},                 // In case the password name is wrong
                 {"", "09152", false},                   // In case the login name is left blank, the correct password
