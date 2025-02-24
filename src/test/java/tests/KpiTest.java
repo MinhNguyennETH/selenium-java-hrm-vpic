@@ -21,7 +21,7 @@ public class KpiTest extends BaseTest {
     }
 
     @Test (priority = 1)
-    public void testTienDoKPI() {
+    public void testTienDoKpiCaNhan() {
         kpiPage.navigateToTienDoKPI();
         Assert.assertTrue(kpiPage.isTienDoKPIDisplayed(), "Tiến độ KPI cá nhân không hiển thị đúng!");
     }
@@ -29,6 +29,6 @@ public class KpiTest extends BaseTest {
     @Test
     public void testKPICaNhanTheoThang() {
         kpiPage.navigateToKPICaNhanTheoThang();
-        Assert.assertTrue(kpiPage.isKPICaNhanTheoThangDisplayed(), "KPI cá nhân theo tháng không hiển thị đúng!");
+        Assert.assertTrue(kpiPage.VerifyKpiCaNhanTheoMonth(), "KPI cá nhân theo tháng không hiển thị đúng!");
     }
 }
