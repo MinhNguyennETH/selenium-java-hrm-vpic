@@ -15,7 +15,7 @@ public class BasePage {
     // Constructor để khởi tạo driver và wait
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Thời gian chờ mặc định là 10 giây
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     // Phương thức setText
@@ -32,5 +32,4 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    // Các phương thức khác như verifyElement, getElementText, v.v có thể được thêm vào
 }
