@@ -1,28 +1,37 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PayslipPage;
 
 public class PayslipTest extends BaseTest {
+    private PayslipPage payslipPage;
+    private LoginPage loginPage;
+
+    @BeforeMethod
+    public void setUpPayslipTest() {
+        loginPage = new LoginPage(driver);
+        loginPage.login("09152", "Vanbinh123");
+        payslipPage = new PayslipPage(driver);
+    }
+
 
     @Test
-    public void testViewMonthlyPayslip() {
-        // Bước 1: Đăng nhập
-        driver.get("http://115.74.225");
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("09152", "Vanbinh123");
+    public void testViewMonthlyPayslip() throws InterruptedException {
+        payslipPage.viewMonthlyPayslip();
+    }
 
-        // Bước 2: Kiểm tra chức năng xem phiếu lương
-        PayslipPage payslipPage = new PayslipPage(driver);
+    @Test
+    public void testViewBonusPayslip() {
+        payslipPage.viewBonusPayslip();
+    }
 
-        // Mở menu Payslip
-        payslipPage.clickPayslipMenu();
+    @Test
+    public void testView13Payslip() {
+        payslipPage.view13thPayslip();
 
-        // Click vào Monthly Payslip
-        payslipPage.clickMonthlyPayslip();
-        
     }
 }
 

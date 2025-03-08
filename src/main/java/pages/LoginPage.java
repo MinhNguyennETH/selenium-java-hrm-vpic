@@ -1,5 +1,7 @@
 package pages;
 
+import base.BasePage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     private WebDriver driver;
     private WebDriverWait wait;
 
@@ -25,21 +27,20 @@ public class LoginPage {
     @FindBy(xpath = "//b[contains(text(),'SerExtraNet5')]")
     private WebElement successMessage;
 
-    @FindBy(name = "Username")
+    @FindBy(xpath = "//h3[contains(text(),'Đăng nhập')]")
     private WebElement errorMessage;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
     }
 
     public void login(String username, String password) {
-        usernameField.clear();
-        usernameField.sendKeys(username);
-        passwordField.clear();
-        passwordField.sendKeys(password);
-        loginButton.click();
+        setText(usernameField, username, false);
+        setText(passwordField, password, false);
+        clickElement(loginButton);
+
     }
 
     public boolean isLoginSuccessful() {

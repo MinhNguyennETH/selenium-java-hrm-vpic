@@ -13,22 +13,22 @@ public class KpiTest extends BaseTest {
     private KpiPage kpiPage;
 
     @BeforeMethod
-    public void setUp() {
-        driver.get("http://115.74.225");
+    public void setUpKpiTest() {
+
         loginPage = new LoginPage(driver);
         kpiPage = new KpiPage(driver);
-        loginPage.login("09152", "Vanbinh123");
+        loginPage.login("09152","Vanbinh123");
     }
-
+  
     @Test (priority = 1)
-    public void testTienDoKPI() {
+    public void testTienDoKpiCaNhan() {
         kpiPage.navigateToTienDoKPI();
-        Assert.assertTrue(kpiPage.isTienDoKPIDisplayed(), "Tiến độ KPI cá nhân không hiển thị đúng!");
+        Assert.assertTrue(kpiPage.isTienDoKPIDisplayed(), "Tiến độ KPI not displayed");
     }
 
     @Test
     public void testKPICaNhanTheoThang() {
         kpiPage.navigateToKPICaNhanTheoThang();
-        Assert.assertTrue(kpiPage.isKPICaNhanTheoThangDisplayed(), "KPI cá nhân theo tháng không hiển thị đúng!");
+        Assert.assertTrue(kpiPage.VerifyKpiCaNhanTheoMonth(), "KPI cá nhân theo tháng not displayed!");
     }
 }
