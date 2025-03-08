@@ -1,6 +1,5 @@
 package pages;
 
-import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,36 +9,37 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage extends BasePage {
-    protected WebDriver driver;
-    protected WebDriverWait wait;
+public class LoginPage {
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     @FindBy(name = "Username")
-    WebElement usernameField;
+    private WebElement usernameField;
 
     @FindBy(name = "Password")
-    WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(id = "SerExtraNet5_Membership_LoginPanel0_LoginButton")
-    WebElement loginButton;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//b[contains(text(),'SerExtraNet5')]")
-    WebElement successMessage;
+    private WebElement successMessage;
 
-    @FindBy(xpath = "//h3[contains(text(),'Đăng nhập')]")
-    WebElement errorMessage;
+    @FindBy(name = "Username")
+    private WebElement errorMessage;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
     public void login(String username, String password) {
-        setText(usernameField, username, false);
-        setText(passwordField, password, false);
-        clickElement(loginButton);
-
+        usernameField.clear();
+        usernameField.sendKeys(username);
+        passwordField.clear();
+        passwordField.sendKeys(password);
+        loginButton.click();
     }
 
     public boolean isLoginSuccessful() {
