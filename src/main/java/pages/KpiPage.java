@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class KpiPage {
-    private WebDriver driver;
+    private  WebDriver driver;
     private WebDriverWait wait;
 
     @FindBy(xpath = "//span[contains(text(),'Quản lý KPI')]")
