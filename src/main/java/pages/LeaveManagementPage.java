@@ -16,19 +16,29 @@ public class LeaveManagementPage extends BasePage {
 
 
     @FindBy(xpath = "//span[normalize-space()='Leave Management']")
+    private WebElement leaveManagement_Button;
+
 
     //-------------------Remaining annual leave--------------------------------------------------------------
     @FindBy(xpath = "//span[contains(text(),'Remaining annual leave')]")
+    private WebElement remainingAnnualLeave_Button;
 
     @FindBy(xpath = "//h1[contains(text(),'Phép tồn')]")
+    private WebElement remainingAnnualLeave_Title;
 
     @FindBy(xpath = "//span[@class='button-inner']")
+    private WebElement leaveRegistration_Button;
 
 
     //-------------------Register for annual leave-------------------------------------------------------------
     @FindBy(xpath = "//span[contains(text(),'Register for annual leave')]")
+    private WebElement registerForAnnualLeave_Button;
 
     @FindBy(xpath = " //div[text()='Register for annual leave']")
+    private WebElement registerForAnnualLeave_Title;
+
+
+
 
 
 
