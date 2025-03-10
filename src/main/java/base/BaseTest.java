@@ -1,22 +1,21 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import pages.LoginPage;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import ultils.Config;
 
 public class BaseTest {
     protected WebDriver driver;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void setup() {
         driver = DriverFactory.getDriver();
         driver.get(Config.url_Vpic);
     }
 
-    @AfterClass
+    @AfterMethod
     public void teardown() {
         DriverFactory.quitDriver();
     }

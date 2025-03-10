@@ -6,55 +6,53 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import java.time.Duration;
 import java.util.Set;
 
 public class PayslipPage extends BasePage {
 
     // Payslip Menu
     @FindBy(xpath = "//span[contains(text(),'Payslip')]")
-    private WebElement payslipMenu;
+     WebElement payslipMenu;
 
     // General
     @FindBy(xpath = "//span[@id='select2-chosen-2']")
-    private WebElement clickMonth;
+     WebElement clickMonth;
 
     @FindBy(xpath = "//span[@id='select2-chosen-1']")
-    private WebElement clickYear;
+     WebElement clickYear;
 
     @FindBy(xpath = "//input[@id='s2id_autogen2_search']")
-    private WebElement searchMonth;
+     WebElement searchMonth;
 
     @FindBy(xpath = "//input[@id='s2id_autogen1_search']")
-    private WebElement searchYear;
+     WebElement searchYear;
 
     @FindBy(xpath = "//i[@class='fa fa-file-pdf-o text-red']")
-    private WebElement clickViewFilePDF;
+     WebElement clickViewFilePDF;
 
     //------------------------Monthly Payslip------------------------------------------------------------------------
 
     // Monthly payslip Page
     @FindBy(xpath = "//span[contains(text(),'Monthly payslip')]")
-    private WebElement monthlyPayslip;
+     WebElement monthlyPayslip;
 
     @FindBy(xpath = "//div[contains(text(),'Monthly payslip')]")
-    private WebElement Title_MonthlyPayslip;
+     WebElement Title_MonthlyPayslip;
 
     //------------------------Bonus Payslip------------------------------------------------------------------------
     @FindBy(xpath = "//span[contains(text(),'Bonus payslip')]")
-    private WebElement bonusPayslip;
+     WebElement bonusPayslip;
 
     @FindBy(xpath = "//div[contains(text(),'Bonus')]")
-    private WebElement Title_Bonus;
+     WebElement Title_Bonus;
 
     //------------------------13th Payslip------------------------------------------------------------------------
     @FindBy(xpath = "//span[contains(text(),'13th payslip')]")
-    private WebElement thirteenthPayslip;
+     WebElement thirteenthPayslip;
 
     @FindBy(xpath = "//div[contains(text(),'13th payslip')]")
-    private WebElement Title_13thPayslip;
+     WebElement Title_13thPayslip;
 
     public PayslipPage(WebDriver driver) {
         super(driver);

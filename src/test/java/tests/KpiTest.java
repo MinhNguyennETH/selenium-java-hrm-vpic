@@ -29,6 +29,6 @@ public class KpiTest extends BaseTest {
     @Test
     public void testKPICaNhanTheoThang() {
         kpiPage.navigateToKPICaNhanTheoThang();
-        Assert.assertTrue(kpiPage.VerifyKpiCaNhanTheoMonth(), "KPI cá nhân theo tháng not displayed!");
+        Assert.assertTrue(kpiPage.isKPICaNhanTheoThangDisplayed(), "KPI cá nhân theo tháng not displayed!");
     }
 }

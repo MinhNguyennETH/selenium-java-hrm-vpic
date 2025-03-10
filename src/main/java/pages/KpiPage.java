@@ -11,26 +11,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class KpiPage {
-    private  WebDriver driver;
-    private WebDriverWait wait;
+    protected  WebDriver driver;
+    protected WebDriverWait wait;
 
     @FindBy(xpath = "//span[contains(text(),'Quản lý KPI')]")
-    private WebElement quanLyKPIButton;
+     WebElement quanLyKPIButton;
 
     @FindBy(xpath = "//span[normalize-space()='KPI cá nhân']")
-    private WebElement kpiCaNhanButton;
+     WebElement kpiCaNhanButton;
 
     @FindBy(xpath = "//span[contains(text(),'Tiến độ thực hiện KPI cá nhân')]")
-    private WebElement tienDoKPIButton;
+     WebElement tienDoKPIButton;
 
     @FindBy(xpath = "//span[normalize-space()='KPI cá nhân theo Month']")
-    private WebElement kpiCaNhanTheoThangButton;
+     WebElement kpiCaNhanTheoThangButton;
 
     @FindBy(xpath = "//div[contains(text(),'Tiến độ thực hiện KPI cá nhân')]")
-    private WebElement tienDoKPITitle;
+     WebElement tienDoKPITitle;
 
     @FindBy(xpath = "//div[contains(text(),'KPI cá nhân theo Month')]")
-    private WebElement kpiCaNhanTheoThangTitle;
+     WebElement kpiCaNhanTheoThangTitle;
 
     public KpiPage(WebDriver driver) {
         this.driver = driver;
