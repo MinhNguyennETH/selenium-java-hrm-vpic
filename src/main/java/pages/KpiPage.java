@@ -1,6 +1,6 @@
 package pages;
 
-
+import base.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,9 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class KpiPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class KpiPage extends BasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Quản lý KPI')]")
     private WebElement quanLyKPIButton;
@@ -27,7 +25,6 @@ public class KpiPage {
 
     @FindBy(xpath = "//div[contains(text(),'Tiến độ thực hiện KPI cá nhân')]")
     private WebElement tienDoKPITitle;
-
 
     //----------------KPI CA NHAN THEO MONTH -------------------------------------------------------------
     @FindBy(xpath = "//span[normalize-space()='KPI cá nhân theo Month']")
@@ -48,37 +45,30 @@ public class KpiPage {
     @FindBy(xpath = "//span[@id='ui-id-1']")
     private WebElement Verify;
 
-
-    //-----------------------------------------------------------------------------------------------------
-
     public KpiPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
     }
 
     public void navigateToTienDoKPI() {
-        wait.until(ExpectedConditions.elementToBeClickable(quanLyKPIButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(kpiCaNhanButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(tienDoKPIButton)).click();
+        clickElement(quanLyKPIButton);
+        clickElement(kpiCaNhanButton);
+        clickElement(tienDoKPIButton);
     }
 
     public boolean isTienDoKPIDisplayed() {
-
         return wait.until(ExpectedConditions.elementToBeClickable(tienDoKPITitle)).isDisplayed();
     }
 
     public void navigateToKPICaNhanTheoThang() {
-        wait.until(ExpectedConditions.elementToBeClickable(quanLyKPIButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(kpiCaNhanButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(kpiCaNhanTheoThangButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(SelectButton)).click();
+        clickElement(quanLyKPIButton);
+        clickElement(kpiCaNhanButton);
+        clickElement(kpiCaNhanTheoThangButton);
+        clickElement(SelectButton);
         wait.until(ExpectedConditions.elementToBeClickable(inputSearch)).sendKeys("2024", Keys.ENTER);
-        
-        wait.until(ExpectedConditions.elementToBeClickable(ViewKPI)).click();
-
+        clickElement(ViewKPI);
     }
-
 
     public boolean VerifyKpiCaNhanTheoMonth() {
         return wait.until(ExpectedConditions.visibilityOf(Verify)).isDisplayed();
