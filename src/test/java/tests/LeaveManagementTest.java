@@ -20,7 +20,7 @@ public class LeaveManagementTest extends BaseTest {
     }
 
     @Test
-    public void testViewRemainingAnnualLeave() {
+    public void testViewRemainingAnnualLeave() throws InterruptedException {
         leaveManagementPage.viewRemainingAnnualLeave();
     }
 

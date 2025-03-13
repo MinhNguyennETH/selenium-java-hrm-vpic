@@ -15,6 +15,7 @@ public class BasePage {
     // Constructor để khởi tạo driver và wait
     public BasePage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     // Phương thức setText

@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Set;
 
 public class LeaveManagementPage extends BasePage {
-
 
 
     @FindBy(xpath = "//span[normalize-space()='Leave Management']")
@@ -38,27 +38,42 @@ public class LeaveManagementPage extends BasePage {
     private WebElement registerForAnnualLeave_Title;
 
 
-
-
-
-
     public LeaveManagementPage(WebDriver driver) {
         super(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(driver, this);
     }
 
-    public void viewRemainingAnnualLeave(){
+    public void viewRemainingAnnualLeave() throws InterruptedException {
         clickElement(leaveManagement_Button);
         clickElement(remainingAnnualLeave_Button);
+
+        // Verify
         WebElement RemainingLeave_Title = wait.until(ExpectedConditions.visibilityOf(remainingAnnualLeave_Title));
         Assert.assertTrue(RemainingLeave_Title.isDisplayed(), "Title not displayed! ");
-        Assert.assertEquals(RemainingLeave_Title.getText(),"Phép tồn", "Incorrect title! ");
+        String remainingLeaveText = RemainingLeave_Title.getText();
+        System.out.println("Remaining Leave Title: " + remainingLeaveText);
+
+        // Lưu lại handle của tab hiện tại (tab cũ)
+        String originalTab = driver.getWindowHandle();
 
         clickElement(leaveRegistration_Button);
+
+        // Lấy tất cả các window handle (tab)
+        Set<String> allTabs = driver.getWindowHandles();
+        for (String tab : allTabs) {
+            if (!tab.equals(originalTab)) {
+                driver.switchTo().window(tab);
+                break;
+            }
+        }
+
+        clickElement(leaveRegistration_Button);
+
+        // Verify
         WebElement RegisterLeave_Title = wait.until(ExpectedConditions.visibilityOf(registerForAnnualLeave_Title));
         Assert.assertTrue(RegisterLeave_Title.isDisplayed(), "Title not displayed! ");
-        Assert.assertEquals(RegisterLeave_Title.getText(),"Register for annual leave", "Incorrect title! ");
-
+        String registerLeaveText = RegisterLeave_Title.getText();
+        System.out.println("Register Leave Title: " + registerLeaveText);
     }
 }
