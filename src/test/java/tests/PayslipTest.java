@@ -24,7 +24,7 @@ public class PayslipTest extends BaseTest {
     }
 
     @Test
-    public void testViewBonusPayslip() {
+    public void testBonusPayslip() {
         payslipPage.viewBonusPayslip();
     }
 
