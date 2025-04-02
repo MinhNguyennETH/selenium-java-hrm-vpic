@@ -1,12 +1,46 @@
 package tests;
 
 import base.BaseTest;
+import helpers.CaptureHelpers;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 import pages.LoginPage;
+import utils.LogUtils;
 
 public class LoginTest extends BaseTest {
+
+    @BeforeClass
+    public void setupRecord() throws Exception {
+        CaptureHelpers.startRecord("Login Test");
+        
+    }
+
+    // Nó sẽ thực thi sau mỗi lần thực thi testcase (@Test)
+    @AfterMethod
+    public void takeScreenshot(ITestResult result) throws InterruptedException {
+        Thread.sleep(1000);
+        //Khởi tạo đối tượng result thuộc ITestResult để lấy trạng thái và tên của từng Test Case
+        //Ở đây sẽ so sánh điều kiện nếu testcase passed hoặc failed
+        //passed = SUCCESS và failed = FAILURE
+
+        if (ITestResult.FAILURE == result.getStatus()) {
+            try {
+                CaptureHelpers.captureScreenshot(driver, result.getName());
+            } catch (Exception e) {
+                System.out.println("Exception while taking screenshot " + e.getMessage());
+            }
+        }
+    }
+
+    @AfterClass
+    public void tearDown() throws Exception {
+        Thread.sleep(1000);
+        driver.quit();
+
+        CaptureHelpers.stopRecord();
+    }
+    
 
     @DataProvider(name = "loginTestData")
     public Object[][] getLoginData() {
@@ -26,7 +60,9 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginTestData")
-    public void testLogin(String username, String password, boolean expectedResult) {
+    public void testLogin(String username, String password, boolean expectedResult)  {
+        LogUtils.info("Chạy test case login");
+
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(username, password);
  

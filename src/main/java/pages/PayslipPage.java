@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import java.time.Duration;
 import java.util.Set;
 
 public class PayslipPage extends BasePage {
@@ -16,6 +14,11 @@ public class PayslipPage extends BasePage {
     // Payslip Menu
     @FindBy(xpath = "//span[contains(text(),'Payslip')]")
     private WebElement payslipMenu;
+
+    //Bonus Drop down year and month
+    @FindBy(xpath = "//div[@id='s2id_SerExtraNet5_HRM_VPIC_TdsTienThuongGrid0_QuickFilter_YearId']//b[@role='presentation']")
+    private WebElement bonusDropDownYear;
+
 
     // General
     @FindBy(xpath = "//span[@id='select2-chosen-2']")
@@ -48,6 +51,11 @@ public class PayslipPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(text(),'Bonus')]")
     private WebElement Title_Bonus;
+
+    @FindBy(xpath = "//div[@class='slick-pane slick-pane-top slick-pane-left']")
+    private WebElement slickPaneTop;
+
+
 
     //------------------------13th Payslip------------------------------------------------------------------------
     @FindBy(xpath = "//span[contains(text(),'13th payslip')]")
@@ -105,7 +113,18 @@ public class PayslipPage extends BasePage {
     public void viewBonusPayslip() {
         clickElement(payslipMenu);
         clickElement(bonusPayslip);
-        clickElement(Title_Bonus);
+        clickElement(bonusDropDownYear);
+
+        WebElement verifyInput = wait.until(ExpectedConditions.visibilityOf(slickPaneTop));
+        String slickPaneTopText = verifyInput.getText();
+        System.out.println("Slick Pane Top:"  +slickPaneTopText);
+
+
+
+
+
+        
+//        clickElement(Title_Bonus);
 
     }
 

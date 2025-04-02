@@ -11,7 +11,7 @@ public class PayslipTest extends BaseTest {
     private LoginPage loginPage;
 
     @BeforeMethod
-    public void setUpPayslipTest() {
+    public void setUpPayslipTest() throws InterruptedException {
         loginPage = new LoginPage(driver);
         loginPage.login("09152", "Vanbinh123");
         payslipPage = new PayslipPage(driver);

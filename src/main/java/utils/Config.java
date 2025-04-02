@@ -1,4 +1,4 @@
-package ultils;
+package utils;
 
 import io.github.cdimascio.dotenv.Dotenv;
 

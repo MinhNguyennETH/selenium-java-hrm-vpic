@@ -13,7 +13,7 @@ public class LeaveManagementTest extends BaseTest {
 
 
     @BeforeMethod
-    public void setUpLeaveManagementTest() {
+    public void setUpLeaveManagementTest() throws InterruptedException {
         loginPage = new LoginPage(driver);
         leaveManagementPage = new LeaveManagementPage(driver);
         loginPage.login("09152", "Vanbinh123");

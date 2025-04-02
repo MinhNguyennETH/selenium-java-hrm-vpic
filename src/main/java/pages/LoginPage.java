@@ -1,7 +1,6 @@
 package pages;
 
 import base.BasePage;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,15 +31,15 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(driver, this);
+
     }
 
-    public void login(String username, String password) {
+    public void login(String username, String password)   {
         setText(usernameField, username, false);
         setText(passwordField, password, false);
         clickElement(loginButton);
-
     }
 
     public boolean isLoginSuccessful() {

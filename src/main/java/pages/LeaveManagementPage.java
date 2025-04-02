@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.LogUtils;
 
 import java.time.Duration;
 import java.util.Set;
@@ -40,8 +41,6 @@ public class LeaveManagementPage extends BasePage {
 
     public LeaveManagementPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        PageFactory.initElements(driver, this);
     }
 
     public void viewRemainingAnnualLeave() throws InterruptedException {
@@ -52,7 +51,8 @@ public class LeaveManagementPage extends BasePage {
         WebElement RemainingLeave_Title = wait.until(ExpectedConditions.visibilityOf(remainingAnnualLeave_Title));
         Assert.assertTrue(RemainingLeave_Title.isDisplayed(), "Title not displayed! ");
         String remainingLeaveText = RemainingLeave_Title.getText();
-        System.out.println("Remaining Leave Title: " + remainingLeaveText);
+        LogUtils.info("Remaining Leave Title: " + remainingLeaveText);
+//        System.out.println("Remaining Leave Title: " + remainingLeaveText);
 
         // Lưu lại handle của tab hiện tại (tab cũ)
         String originalTab = driver.getWindowHandle();
@@ -74,6 +74,7 @@ public class LeaveManagementPage extends BasePage {
         WebElement RegisterLeave_Title = wait.until(ExpectedConditions.visibilityOf(registerForAnnualLeave_Title));
         Assert.assertTrue(RegisterLeave_Title.isDisplayed(), "Title not displayed! ");
         String registerLeaveText = RegisterLeave_Title.getText();
-        System.out.println("Register Leave Title: " + registerLeaveText);
+        LogUtils.info("Register Leave Title: " + registerLeaveText);
+//        System.out.println("Register Leave Title: " + registerLeaveText);
     }
 }

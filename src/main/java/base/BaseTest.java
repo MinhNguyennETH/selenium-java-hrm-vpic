@@ -5,7 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import ultils.Config;
+import utils.Config;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -13,9 +13,11 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void setup(@Optional("chrome") String browser) {
+    public void setupChrome(@Optional("chrome") String browser) {
         driver = DriverFactory.getDriver(browser);
         driver.get(Config.url_Vpic);
+
+
     }
 
     @AfterMethod

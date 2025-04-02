@@ -1,18 +1,15 @@
 package pages;
 
 
+import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+public class KpiPage extends BasePage {
 
-public class KpiPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+
 
     @FindBy(xpath = "//span[contains(text(),'Quản lý KPI')]")
     private WebElement quanLyKPIButton;
@@ -33,31 +30,27 @@ public class KpiPage {
     private WebElement kpiCaNhanTheoThangTitle;
 
     public KpiPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
-
     public void navigateToTienDoKPI() {
-        wait.until(ExpectedConditions.elementToBeClickable(quanLyKPIButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(kpiCaNhanButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(tienDoKPIButton)).click();
+        clickElement(quanLyKPIButton);
+        clickElement(kpiCaNhanButton);
+        clickElement(tienDoKPIButton);
     }
 
     public boolean isTienDoKPIDisplayed() {
 
-        return wait.until(ExpectedConditions.elementToBeClickable(tienDoKPITitle)).isDisplayed();
+        return isElementVisible(tienDoKPITitle);
     }
 
     public void navigateToKPICaNhanTheoThang() {
-        wait.until(ExpectedConditions.elementToBeClickable(quanLyKPIButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(kpiCaNhanButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(kpiCaNhanTheoThangButton)).click();
+        clickElement(quanLyKPIButton);
+        clickElement(kpiCaNhanButton);
+        clickElement(kpiCaNhanTheoThangButton);
     }
 
 
     public boolean isKPICaNhanTheoThangDisplayed() {
-
-        return wait.until(ExpectedConditions.visibilityOf(kpiCaNhanTheoThangTitle)).isDisplayed();
+        return isElementVisible(kpiCaNhanTheoThangTitle);
     }
 }
